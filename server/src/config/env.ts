@@ -23,8 +23,16 @@ export const Env = {
     /** Node */
     node: requireEnv('NODE_ENV'),
 
+    get isProd() {
+        return this.node === 'prod';
+    },
+
     /** Server Options */
     port: parseInt(requireEnv('SERVER_PORT', '3000'), 10),
+
+    db: {
+        url: requireEnv('DATABASE_URL')
+    },
 
     /** Secrets */
     secrets: {
