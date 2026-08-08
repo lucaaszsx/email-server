@@ -1,10 +1,10 @@
 import { BaseException, InternalErrorException, sendApiResponse } from "../responses/index.js";
-import type { LoggerInterface } from "../lib/logger/index.js";
+import type { LoggerInterface } from "../../lib/logger/index.js";
 import { ApiErrorCodes } from "../responses/ApiCodes.js";
-import { InjectLogger } from "../decorators/index.js";
+import { InjectLogger } from "../../decorators/index.js";
 import type { ErrorRequestHandler } from "express";
 import { injectable, singleton } from 'tsyringe';
-import { Env } from "../config/env.js";
+import { Env } from "../../config/env.js";
 import pg from "postgres";
 
 @injectable()

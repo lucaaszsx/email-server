@@ -1,5 +1,5 @@
 /** Repositories */
-export { userRepository } from './repositories/users.js';
+export { UserRepository } from './repositories/users.js';
 
 /** Postgres connection */
 export { db } from './client.js';
