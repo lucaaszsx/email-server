@@ -3,13 +3,15 @@ import type { LoggerInterface } from "../lib/logger/index.js";
 import { ApiErrorCodes } from "../responses/ApiCodes.js";
 import { InjectLogger } from "../decorators/index.js";
 import type { ErrorRequestHandler } from "express";
-import { PostgresError } from "postgres";
+import { injectable, singleton } from 'tsyringe';
 import { Env } from "../config/env.js";
 import pg from "postgres";
 
+@injectable()
+@singleton()
 export class ErrorHandlerMiddleware {
-    @InjectLogger(__filename)
-    private logger!: LoggerInterface;
+    @InjectLogger(import.meta.url)
+    private declare logger: LoggerInterface;
 
     handler: ErrorRequestHandler = (err, req, res, _next) => {
         const location = `${req.method} ${req.url}`;
