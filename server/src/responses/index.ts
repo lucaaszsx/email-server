@@ -3,6 +3,9 @@
 // Base
 export { BaseException } from './exceptions/Base.js';
 
+// Domain
+export { NotFoundException } from './exceptions/domain/NotFound.js';
+
 // Internal
 export { InternalErrorException } from './exceptions/internal/InternalError.js';
 
