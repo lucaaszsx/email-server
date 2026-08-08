@@ -5,6 +5,7 @@ import { InjectLogger } from "../decorators/index.js";
 import type { ErrorRequestHandler } from "express";
 import { PostgresError } from "postgres";
 import { Env } from "../config/env.js";
+import pg from "postgres";
 
 export class ErrorHandlerMiddleware {
     @InjectLogger(__filename)
@@ -31,7 +32,7 @@ export class ErrorHandlerMiddleware {
                 errorDetails: err.details
             });
             return;
-        } else if (err instanceof PostgresError) {
+        } else if (err instanceof pg.PostgresError) {
             this.logger.error(`${location} | Unexpected PostgreSQL error (${err.code}): ${err.message}`);
 
             sendApiResponse(req, res, {
