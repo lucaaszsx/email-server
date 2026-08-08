@@ -1,4 +1,4 @@
-import postgres from 'postgres';
 import { Env } from '../config/env.js';
+import pg from 'postgres';
 
-export const db = postgres(Env.db.url);
+export const db = pg(Env.db.url);
